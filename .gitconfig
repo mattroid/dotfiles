@@ -1,0 +1,33 @@
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[user]
+	name = Matthew O’Connor
+	email = moconnor@marinsoftware.com
+[reviewboard]
+	url = http://rb.marinsoftware.com
+[push]
+	default = simple
+[core]
+	excludesfile = /Users/moconnor/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/moconnor/.stCommitMsg
+[github]
+	oauth-token = 42d343715f132d94dae552c0a71ed9fc28eb93bc
+	user = mattroid
+[alias]
+	recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format=\"%(refname:short)\"
+	overview = git log --all --since=2
+	overview = log --all --since=2
+	recap = log --all --oneline --no-merges --author=moconnor@marinsoftware.com
+	today = log --since=00:00:00 --all --no-merges --oneline --author=moconnor@marinsoftware.com
+	graph = log --graph --all --decorate --stat --date=iso
+	purge = !git branch --merged | grep -v \\\"^\\\\s*master$\\\" | grep -v \\\"\\\\*\\\" | xargs -n 1 git branch -d
