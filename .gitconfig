@@ -21,7 +21,6 @@
 [commit]
 	template = /Users/moconnor/.stCommitMsg
 [github]
-	oauth-token = 42d343715f132d94dae552c0a71ed9fc28eb93bc
 	user = mattroid
 [alias]
 	recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format=\"%(refname:short)\"
